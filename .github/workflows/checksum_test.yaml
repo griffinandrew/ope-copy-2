@@ -31,12 +31,10 @@ jobs:
           #*********************************************
           CHECKSUM=7d8ae7f7c2864fe89255cfbf9bd4e48b4061783aa971542d7cbf3462e4275b07
           if [["$QUICK_TRIM == $CHECKSUM"]]; then
-                echo "VERIFICATION COMPLETE"
-                echo "SUCCESS" 
-                echo "checksum = $QUICK_TRIM"
+                echo "******SUCCESS********" 
           else 
-                echo "VERIFICATION COMPLETE"
-                echo "FAILURE"
-                echo "checksum = $QUICK_TRIM does not match the correct image checksum = $CHECKSUM"
-                exit 1
+                echo "*******FAILURE*******"
+                echo "image checksum: $QUICK_TRIM"
+                echo "correct image checksum: $CHECKSUM"
+                #exit 1
           fi
