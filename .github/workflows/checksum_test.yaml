@@ -21,15 +21,9 @@ jobs:
       - name: run checksum #creates var with checksum value to be compared 
         run: |
           echo "VERIFYING IMAGE CHECKSUM"
-          PERMISSIONS_CHECKSUM=$( make checksum )
-          echo "displaying the pulled image checksum: $PERMISSIONS_CHECKSUM "
+          PERMISSIONS_CHECKSUM=$(make checksum)
+          echo "checksum: $PERMISSIONS_CHECKSUM "
           QUICK_TRIM=${PERMISSIONS_CHECKSUM::64} #quick_trim is used to get rid of the tailing "-" after the checksum
-          echo "displaying modified checksum: $QUICK_TRIM "
-          echo "COMPARING PULLED IMAGE CHECKSUM WITH CORRECT IMAGE CHECKSUM"
-          #*********************************************
-          #need to insert correct image CHECKSUM val to compare
-          #*********************************************
-          CHECKSUM=7d8ae7f7c2864fe89255cfbf9bd4e48b4061783aa971542d7cbf3462e4275b07
           if [["$QUICK_TRIM == $CHECKSUM"]]; then
                 echo "******SUCCESS********" 
           else 
