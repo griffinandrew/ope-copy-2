@@ -1,4 +1,4 @@
-name: image and version test
+name: image-version test
 on:
   push:
     branches: base-ope-image
@@ -17,19 +17,22 @@ jobs:
           pip install jupyter-book matplotlib numpy pandas jq
       - name: make build # makes the container image build 
         run: |
-          #make build
-          IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
-          docker pull $IMAGE
+          make build
+          #IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
+          #docker pull $IMAGE
           docker image ls
+          IMAGE_ID=$(docker images --format "{{.ID}}" --quiet --limit 1)
+          echo "$IMAGE_ID"
         
       - name: get base image and version
         run: |
-          IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
-          docker run -d --name stable $IMAGE 
+          IMAGE_ID=$(docker images --format "{{.ID}}" --quiet --limit 1)
+          #IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
+          docker run -d --name stable $IMAGE_ID
           ID=$( docker ps -aqf "name=stable" )     
           docker inspect $IMAGE > image.json
           REPO_TAG=$(jq -r '.[0].RepoTags[0]' image.json)
-
+          IMAGE=docker images --format "{{.Repository}}" | head -n 1
           if [[ "$REPO_TAG" == "$IMAGE" ]]; then
                 echo "CORRECT IMAGE AND VERSION"
           else
