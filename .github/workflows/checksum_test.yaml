@@ -25,7 +25,9 @@ jobs:
           SUM=$PERMISSIONS_CHECKSUM
           QUICK_TRIM=${SUM::64} #quick_trim is used to get rid of the tailing "-" after the checksum
           echo $QUICK_TRIM
-          echo $CHECKSUM
+          CHECK=$( cat permissions_checksum.txt )
+          echo $CHECK
+          CHECKSUM=${CHECK::64}
           if [["$QUICK_TRIM == $CHECKSUM"]]; then
                 echo "******SUCCESS********" 
           else 
