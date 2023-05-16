@@ -2,3 +2,10 @@ jupyter-book
 matplotlib
 numpy
 pandas
+jq
+ipywidgets 
+notebook 
+nbconvert 
+p2j 
+jupyterlab 
+nbclient

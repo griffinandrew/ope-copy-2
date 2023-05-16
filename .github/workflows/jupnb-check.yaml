@@ -14,7 +14,8 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies
         run: |
-          pip install jupyter-book matplotlib numpy pandas ipywidgets notebook nbconvert p2j jupyterlab nbclient
+          pip install -r requirements/requirements.txt 
+          #pip install jupyter-book matplotlib numpy pandas ipywidgets notebook nbconvert p2j jupyterlab nbclient
       - name: Run Docker container
         run: |
           make build

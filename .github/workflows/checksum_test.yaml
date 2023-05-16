@@ -13,8 +13,8 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies #requirements docs unable to read, hard installing dependencies 
         run: |
-          #pip install -r requirements.txt    
-          pip install jupyter-book matplotlib numpy pandas
+          pip install -r requirements/requirements.txt    
+          #pip install jupyter-book matplotlib numpy pandas
       - name: make build # makes the container image build and then creates var with checksum value to be compared 
         run: |
           make build
