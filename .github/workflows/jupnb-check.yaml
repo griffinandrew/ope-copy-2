@@ -17,14 +17,16 @@ jobs:
           pip install jupyter-book matplotlib numpy pandas ipywidgets notebook nbconvert p2j jupyterlab nbclient
       - name: Run Docker container
         run: |
-          IMAGE=quay.io/rh_ee_keli/ope:beta-image-template-NERC-test
-          #IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
-          docker run -d -p 8888:8888 --name mycontainer -v /test.ipynb:/home/jovyan/work $IMAGE #&& until docker exec mycontainer jupyter lab --version; do sleep 1; done
-          container_id=$(docker ps -qf "name=mycontainer" | head -n 1)
+          make build
+      - name: run container
+        run: |
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+          docker run -d -p 8888:8888 --name stable -v /test.ipynb:/home/jovyan/work $IMAGE
+          container_id=$(docker ps -qf "name=stable" | head -n 1)
           docker cp tests/test.ipynb $container_id:/home/jovyan/work
       - name: Wait for container to start
         run: |
-          until docker exec mycontainer jupyter lab --version; do sleep 1; done
+          until docker exec stable jupyter lab --version; do sleep 1; done
       - name: Execute Notebook
         run: |
           container_id=$(docker ps -qf "name=mycontainer" | head -n 1)

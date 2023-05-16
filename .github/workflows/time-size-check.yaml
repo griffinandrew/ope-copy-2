@@ -29,11 +29,9 @@ jobs:
           echo "BUILD TIME:  $min MIN $sec SECS  or  $seconds seconds" > ./time.txt
       - name: extract size and display time and size
         run: |
-          #IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
           IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
           echo "$IMAGE"
           docker run -d --name stable $IMAGE 
-          #docker ps -a
           SIZE=$( docker images --format "{{.Size}}" $IMAGE )
           echo ""
           echo ""

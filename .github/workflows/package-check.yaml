@@ -21,7 +21,6 @@ jobs:
       - name: checkout package versions
         run: |
           pip freeze > ./freeze.txt 
-          echo "iterating through freeze.txt"
           #**********************************************************************
           ##NOTE: exact versions will need to be changed to the standarized image
           #**********************************************************************
