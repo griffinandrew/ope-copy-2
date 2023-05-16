@@ -95,11 +95,18 @@ publish: ## publish current private build to public published version
 # push to update tip to current version
 	docker push $(OPE_BOOK_REG)$(OPE_BOOK_IMAGE)$(OPE_PUBLIC_TAG)
 
-
-checksum: ARGS ?= find / -not \( -path /proc -prune \) -not \( -path /sys -prune \) -type f -exec stat -c '%n %a' {} + | LC_ALL=C sort | sha256sum
+checksum: IMAGE = $(PRIVATE_IMAGE)
+checksum: REG = $(PRIVATE_REG)
+checksum: TAG = $(PRIVATE_TAG)
+checksum: ARGS ?= find / -not \( -path /proc -prune \) -not \( -path /sys -prune \) -type f 2>/dev/null -exec stat -c '%n %a' {} + | sha256sum
 checksum: DARGS ?= -u 0
 checksum: ## start private version  with root shell to do admin and poke around
-	@-docker run -i --rm $(DARGS) $(OPE_BOOK_REG)$(OPE_BOOK_IMAGE)$(OPE_BETA_TAG) $(ARGS)
+	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+
+#checksum: ARGS ?= find / -not \( -path /proc -prune \) -not \( -path /sys -prune \) -type f -exec stat -c '%n %a' {} + | LC_ALL=C sort | sha256sum
+#checksum: DARGS ?= -u 0
+#checksum: ## start private version  with root shell to do admin and poke around
+#	@-docker run -i --rm $(DARGS) $(OPE_BOOK_REG)$(OPE_BOOK_IMAGE)$(OPE_BETA_TAG) $(ARGS)
 
 run-beta: ARGS ?=
 run-beta: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
