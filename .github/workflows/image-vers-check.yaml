@@ -21,6 +21,7 @@ jobs:
           IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
           docker pull $IMAGE
           docker image ls
+        
       - name: get base image and version
         run: |
           IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
