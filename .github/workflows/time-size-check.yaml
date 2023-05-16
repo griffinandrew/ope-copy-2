@@ -22,8 +22,6 @@ jobs:
           end=$(date +%s)
           seconds=$((end-start))
           elapsed=$(echo "scale=2; ($end - $start) / 60.0" | bc)
-          #sec_2_min=$(($elapsed/60.0))
-          #echo "sec to min = $sec_2_min"
           min=${elapsed%.*}
           sec_cut=${elapsed#*.}
           sec_round="${sec_cut:0:1}.${sec_cut:1}"
@@ -32,7 +30,8 @@ jobs:
       - name: extract size and display time and size
         run: |
           #IMAGE=quay.io/rh_ee_keli/ucsls:stable-base-ope-latest
-          IMAGE=$(docker images --format "{{.Repository}}" | head -n 1)
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+          echo "$IMAGE"
           docker run -d --name stable $IMAGE 
           #docker ps -a
           SIZE=$( docker images --format "{{.Size}}" $IMAGE )
