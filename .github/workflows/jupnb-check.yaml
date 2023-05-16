@@ -40,4 +40,4 @@ jobs:
           docker exec $container_id jupyter execute /home/jovyan/work/test.ipynb #if fails will exit here 
           echo "************SUCCESS***********"
       - name: Stop Docker container
-        run: docker stop mycontainer
+        run: docker stop stable

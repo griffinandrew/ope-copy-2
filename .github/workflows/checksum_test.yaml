@@ -17,8 +17,8 @@ jobs:
       - name: make build # makes the container image build and then creates var with checksum value to be compared 
         run: |
           make build
-      - name: run checksum #creates var with checksum value to be compared 
-        run: |
+          #- name: run checksum #creates var with checksum value to be compared 
+          #run: |
           echo "VERIFYING IMAGE CHECKSUM"
           PERMISSIONS_CHECKSUM=$(make checksum)
           echo "checksum: $PERMISSIONS_CHECKSUM"
