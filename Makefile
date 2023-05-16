@@ -199,13 +199,10 @@ root: DARGS ?= -u 0
 root: ## start private version  with root shell to do admin and poke around
 	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
-checksum: IMAGE = $(PRIVATE_IMAGE)
-checksum: REG = $(PRIVATE_REG)
-checksum: TAG = $(PRIVATE_TAG)
-checksum: ARGS ?= find / -not \( -path /proc -prune \) -not \( -path /sys -prune \) -type f 2>/dev/null -exec stat -c '%n %a' {} + | sha256sum
+checksum: ARGS ?= find / -not \( -path /proc -prune \) -not \( -path /sys -prune \) -type f -exec stat -c '%n %a' {} + | LC_ALL=C sort | sha256sum
 checksum: DARGS ?= -u 0
 checksum: ## start private version  with root shell to do admin and poke around
-	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	@-docker run -i --rm $(DARGS) $(OPE_BOOK_REG)$(OPE_BOOK_IMAGE)$(OPE_BETA_TAG) $(ARGS)
 
 user: IMAGE = $(PRIVATE_IMAGE)
 user: REG = $(PRIVATE_REG)
