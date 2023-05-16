@@ -29,7 +29,7 @@ jobs:
           until docker exec stable jupyter lab --version; do sleep 1; done
       - name: Execute Notebook
         run: |
-          container_id=$(docker ps -qf "name=mycontainer" | head -n 1)
+          container_id=$(docker ps -qf "name=stable" | head -n 1)
           echo $container_id
           docker exec $container_id jupyter lab --generate-config
           docker exec $container_id sh -c "echo 'c.NotebookApp.token = \"\"' >> /home/jovyan/.jupyter/jupyter_notebook_config.py"
