@@ -105,6 +105,9 @@ RUN /usr/local/bin/start.sh true; \
 
 COPY start-notebook.d /usr/local/bin/start-notebook.d
 
+# Checksum file dump for github actions
+RUN find / -path /proc -prune -o -type f 2>/dev/null -exec stat -c '%n %a' {} + | sha256sum > /home/jovyan/permissions_checksum.txt
+
 ENV USER=$NB_USER
 
 # Change the ownership of the home directory to root group so it starts up properly
