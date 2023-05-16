@@ -22,8 +22,11 @@ jobs:
         run: |
           echo "VERIFYING IMAGE CHECKSUM"
           PERMISSIONS_CHECKSUM=$(make checksum)
-          echo "checksum: $PERMISSIONS_CHECKSUM "
-          QUICK_TRIM=${$PERMISSIONS_CHECKSUM::64} #quick_trim is used to get rid of the tailing "-" after the checksum
+          echo "checksum: $PERMISSIONS_CHECKSUM"
+          SUM=$PERMISSIONS_CHECKSUM
+          QUICK_TRIM=${SUM::64} #quick_trim is used to get rid of the tailing "-" after the checksum
+          echo $QUICK_TRIM
+          echo $CHECKSUM
           if [["$QUICK_TRIM == $CHECKSUM"]]; then
                 echo "******SUCCESS********" 
           else 
