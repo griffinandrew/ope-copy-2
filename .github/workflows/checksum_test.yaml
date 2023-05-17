@@ -26,11 +26,11 @@ jobs:
           length=${#QUICK_TRIM}
           echo "Length of the string: $length"
           CHECKSUM="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-          if [["$QUICK_TRIM" == "$CHECKSUM"]]; then
+          if [["$QUICK_TRIM==$CHECKSUM"]]; then
             echo "******SUCCESS********" 
           else 
             echo "*******FAILURE*******"
             echo "image checksum: $QUICK_TRIM"
-            echo "correct image checksum: $CHECKSUM"
+            echo "correct checksum: $CHECKSUM"
             exit 1
           fi

@@ -14,23 +14,19 @@ jobs:
       - name: Install dependencies #requirements docs unable to read, hard installing dependencies 
         run: |
           pip install -r requirements/requirements.txt 
-          cp tests/version-check.py ./version-check.py
-          cp tests/versions.txt ./versions.txt
-          chmod +x ./version-check.py
+          cp tests/version-check.py ./version-check.py #add python script to compare vers to this file 
+          cp tests/versions.txt ./versions.txt #add correct version list to compare against
+          chmod +x ./version-check.py # change perms to execute 
       - name: make build
         run: |
           make build
       - name: checkout package versions
         run: |
-          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1) #get image name
           docker run -d --name stable $IMAGE
-          sleep 7
+          sleep 7 # let properly start
           ID=$( docker ps -aqf "name=stable" )
-          docker exec stable pip list >> ./list.txt
-          cat ./list.txt
+          docker exec stable pip list >> ./list.txt #get rid of header for python comparison test
           tail -n +3 ./list.txt > temp.txt
-          mv ./temp.txt ./list.txt
-          list=$(cat ./list.txt)
-          cat ./list.txt
-          python3 ./version-check.py ./list.txt ./versions.txt
-          #python3 tests/version-check.py $list tests/versions.txt 
+          mv ./temp.txt ./list.txt #rewrite truncated list to file
+          python3 ./version-check.py ./list.txt ./versions.txt #send to python for checking

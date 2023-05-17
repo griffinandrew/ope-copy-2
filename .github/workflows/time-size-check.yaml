@@ -16,27 +16,26 @@ jobs:
           pip install -r requirements/requirements.txt    
       - name: make build and calculate elapsed time # makes the container image build and then creates var with checksum value to be compared 
         run: |
-          start=$(date +%s)
-          time make build --silent
-          end=$(date +%s)
-          seconds=$((end-start))
-          elapsed=$(echo "scale=2; ($end - $start) / 60.0" | bc)
-          min=${elapsed%.*}
-          sec_cut=${elapsed#*.}
+          start=$(date +%s) #start the timer
+          time make build --silent 
+          end=$(date +%s) #end timer
+          seconds=$((end-start))  #calc build time in sec
+          elapsed=$(echo "scale=2; ($end - $start) / 60.0" | bc) #get time in min with dec
+          min=${elapsed%.*}  #extract min part 
+          sec_cut=${elapsed#*.} #get the decimal 
           sec_round="${sec_cut:0:1}.${sec_cut:1}"
-          sec=$( echo "$sec_round * 6" | bc -l)
-          echo "BUILD TIME:  $min MIN $sec SECS  or  $seconds seconds" > ./time.txt
+          sec=$( echo "$sec_round * 6" | bc -l) #calc sec's
+          echo "BUILD TIME:  $min MIN $sec SECS  or  $seconds seconds" > ./time.txt #send to file for use in diff run
       - name: extract size and display time and size
         run: |
           IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
           echo "$IMAGE"
           docker run -d --name stable $IMAGE 
-          SIZE=$( docker images --format "{{.Size}}" $IMAGE )
+          SIZE=$( docker images --format "{{.Size}}" $IMAGE ) #extract size from running image
           echo ""
           echo ""
-          cat ./time.txt
+          cat ./time.txt #display calced time 
           echo "" 
-          echo "IMAGE SIZE:  $SIZE"
-          echo ""
+          echo "IMAGE SIZE:  $SIZE" #display size in GB
           echo ""
           docker stop stable
