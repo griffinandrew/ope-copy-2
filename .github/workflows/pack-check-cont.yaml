@@ -27,6 +27,8 @@ jobs:
           cat ./list.txt
           list=$(cat ./list.txt)
           ls
+          cat tests/version-check.py
+          cat tests/version.txt
           python3 tests/version-check.py
           python3 tests/version-check.py $list tests/version.txt 
           ./list.txt tests/version.txt >> ./output.txt
