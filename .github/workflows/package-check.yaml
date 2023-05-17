@@ -28,7 +28,7 @@ jobs:
           echo "freeze"
           cat ./freeze2.txt
           echo "list"
-          cat ./list
+          cat ./list.txt
           pip freeze > ./freeze.txt 
           #**********************************************************************
           ##NOTE: exact versions will need to be changed to the standarized image
