@@ -7,9 +7,6 @@ if len(sys.argv) <= 2:
 
 pip_list_output_file= sys.argv[1]
 pip_list_text= sys.argv[2]
-print(pip_list_output_file)
-print(pip_list_text)
-
 
 versions = set()
 
