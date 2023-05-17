@@ -25,7 +25,7 @@ jobs:
           echo $QUICK_TRIM
           length=${#QUICK_TRIM}
           echo "Length of the string: $length"
-          CHECKSUM="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          CHECKSUM=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
           if [["$QUICK_TRIM" == "$CHECKSUM"]]; then
             echo "******SUCCESS********" 
           else 
