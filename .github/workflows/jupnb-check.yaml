@@ -38,7 +38,18 @@ jobs:
           docker exec $container_id jupyter lab build --minimize=False
           echo "running notebook"
           docker exec $container_id jupyter execute /home/jovyan/work/test.ipynb >> ./output.txt
+          sleep 5
+          HEALTH=$(docker ps --format "{{.Names}}: {{.Status}}" | grep "stable" | awk '{print $2}')
+          docker ps -a
+          echo ""
+          if [[ "$HEALTH" == "Up" ]]; then
+          echo "container healthy"
+          else
+          echo ""
           cat ./output.txt
+          exit -1
+          fi
+          echo ""
           echo "************SUCCESS***********"
       - name: Stop Docker container
         run: docker stop stable
