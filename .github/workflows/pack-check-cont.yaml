@@ -34,6 +34,8 @@ jobs:
           cat ./version-check.py
           cat ./versions.txt
           python3 ./version-check.py ./list.txt ./versions.txt
-          #python3 tests/version-check.py $list tests/versions.txt 
+          cat tests/version-check.py
+          cat tests/versions.txt
+          python3 tests/version-check.py $list tests/versions.txt 
           # ./list.txt tests/version.txt >> ./output.txt
           #cat ./output.txt
