@@ -5,7 +5,6 @@ pandas
 jq
 ipywidgets 
 notebook 
-nbconvert 
-p2j 
+nbconvert
 jupyterlab 
 nbclient

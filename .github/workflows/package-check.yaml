@@ -19,6 +19,11 @@ jobs:
           make build
       - name: checkout package versions
         run: |
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+          docker run -d --name stable $IMAGE
+          ID=$( docker ps -aqf "name=stable" )  
+          docker exec stable pip freeze >> ./freeze2.txt
+          cat ./freeze2.txt
           pip freeze > ./freeze.txt 
           #**********************************************************************
           ##NOTE: exact versions will need to be changed to the standarized image
@@ -133,6 +138,15 @@ jobs:
               ipython==8.13.2)
                 echo "CORRECT version of package: $line"
                 ;;
+              ipython-genutils==0.2.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              ipywidgets==8.0.6)
+                echo "CORRECT version of package: $line"
+                ;;
+              isoduration==20.11.0)
+                echo "CORRECT version of package: $line"
+                ;;
               jedi==0.18.2)
                 echo "CORRECT version of package: $line"
                 ;;
@@ -142,7 +156,13 @@ jobs:
               jsonschema==4.17.3)
                 echo "CORRECT version of package: $line"
                 ;;
-              jupyter-book==0.15.1)
+              json5==0.9.14)
+                echo "CORRECT version of package: $line"
+                ;;
+              json5==0.9.14)
+                echo "CORRECT version of package: $line"
+                ;;
+              jsonpointer==2.3)
                 echo "CORRECT version of package: $line"
                 ;;
               jupyter-cache==0.6.1)
@@ -152,6 +172,33 @@ jobs:
                 echo "CORRECT version of package: $line"
                 ;;
               jupyter_core==5.3.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyter-events==0.6.3)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyter-lsp==2.1.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyter_server==2.5.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyter_server_terminals==0.4.4)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyterlab==4.0.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyterlab-pygments==0.2.2)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyterlab-widgets==3.0.7)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyterlab_server==2.22.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              jq==1.4.1)
                 echo "CORRECT version of package: $line"
                 ;;
               kiwisolver==1.4.4)
@@ -184,6 +231,9 @@ jobs:
               mdurl==0.1.2)
                 echo "CORRECT version of package: $line"
                 ;;
+              mistune==2.0.5)
+                echo "CORRECT version of package: $line"
+                ;;
               myst-nb==0.17.2)
                 echo "CORRECT version of package: $line"
                 ;;
@@ -191,6 +241,12 @@ jobs:
                 echo "CORRECT version of package: $line"
                 ;;
               nbclient==0.7.4)
+                echo "CORRECT version of package: $line"
+                ;;
+              nbclassic==1.0.0)
+                echo "CORRECT version of package: $line"
+                ;;
+              nbconvert==7.4.0)
                 echo "CORRECT version of package: $line"
                 ;;
               nbformat==5.8.0)
@@ -202,10 +258,19 @@ jobs:
               numpy==1.24.3)
                 echo "CORRECT version of package: $line"
                 ;;
+              notebook==6.5.4)
+                echo "CORRECT version of package: $line"
+                ;;
+              notebook_shim==0.2.3)
+                echo "CORRECT version of package: $line"
+                ;;
               packaging==23.1)
                 echo "CORRECT version of package: $line"
                 ;;
               pandas==2.0.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              pandocfilters==1.5.0)
                 echo "CORRECT version of package: $line"
                 ;;
               parso==0.8.3)
@@ -226,6 +291,9 @@ jobs:
               prompt-toolkit==3.0.38)
                 echo "CORRECT version of package: $line"
                 ;;
+              prometheus-client==0.16.0)
+                echo "CORRECT version of package: $line"
+                ;;
               psutil==5.9.5)
                 echo "CORRECT version of package: $line"
                 ;;
@@ -239,6 +307,9 @@ jobs:
                 echo "CORRECT version of package: $line"
                 ;;
               pybtex-docutils==1.0.2)
+                echo "CORRECT version of package: $line"
+                ;;
+              pycparser==2.21)
                 echo "CORRECT version of package: $line"
                 ;;
               pydata-sphinx-theme==0.13.3)
@@ -256,6 +327,9 @@ jobs:
               python-dateutil==2.8.2)
                 echo "CORRECT version of package: $line"
                 ;;
+              python-json-logger==2.0.7)
+                echo "CORRECT version of package: $line"
+                ;;
               pytz==2023.3)
                 echo "CORRECT version of package: $line"
                 ;;
@@ -268,6 +342,15 @@ jobs:
               requests==2.30.0)
                 echo "CORRECT version of package: $line"
                 ;;
+              rfc3339-validator==0.1.4)
+                echo "CORRECT version of package: $line"
+                ;;
+              rfc3986-validator==0.1.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              Send2Trash==1.8.2)
+                echo "CORRECT version of package: $line"
+                ;;
               six==1.16.0)
                 echo "CORRECT version of package: $line"
                 ;;
@@ -275,6 +358,9 @@ jobs:
                 echo "CORRECT version of package: $line"
                 ;;
               soupsieve==2.4.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              sniffio==1.3.0)
                 echo "CORRECT version of package: $line"
                 ;;
               Sphinx==5.0.2)
@@ -337,7 +423,16 @@ jobs:
               tabulate==0.9.0)
                 echo "CORRECT version of package: $line"
                 ;;
+              terminado==0.17.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              tinycss2==1.2.1)
+                echo "CORRECT version of package: $line"
+                ;;
               tornado==6.3.2)
+                echo "CORRECT version of package: $line"
+                ;;
+              tomli==2.0.1)
                 echo "CORRECT version of package: $line"
                 ;;
               traitlets==5.9.0)
@@ -352,10 +447,25 @@ jobs:
               uc-micro-py==1.0.2)
                 echo "CORRECT version of package: $line"
                 ;;
+              uri-template==1.2.0)
+                echo "CORRECT version of package: $line"
+                ;;
               urllib3==2.0.2)
                 echo "CORRECT version of package: $line"
                 ;;
               wcwidth==0.2.6)
+                echo "CORRECT version of package: $line"
+                ;;
+              webcolors==1.13)
+                echo "CORRECT version of package: $line"
+                ;;
+              webencodings==0.5.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              websocket-client==1.5.1)
+                echo "CORRECT version of package: $line"
+                ;;
+              widgetsnbextension==4.0.7)
                 echo "CORRECT version of package: $line"
                 ;;
               zipp==3.15.0)
