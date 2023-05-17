@@ -14,17 +14,16 @@ jobs:
       - name: Install dependencies #requirements docs unable to read, hard installing dependencies 
         run: |
           pip install -r requirements/requirements.txt    
-          #pip install jupyter-book matplotlib numpy pandas jq
       - name: make build # makes the container image build 
         run: |
           make build
       - name: get base image and version
         run: |
-          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1) #get just built image
           docker run -d --name stable $IMAGE
-          ID=$( docker ps -aqf "name=stable" )     
-          docker inspect $IMAGE > image.json
-          REPO_TAG=$(jq -r '.[0].RepoTags[0]' image.json)
+          ID=$( docker ps -aqf "name=stable" )     #get id of image
+          docker inspect $IMAGE > image.json #right inspect info to json for parsing
+          REPO_TAG=$(jq -r '.[0].RepoTags[0]' image.json) #acquire tag
           if [[ "$REPO_TAG" == "$IMAGE" ]]; then
                 echo "CORRECT IMAGE AND VERSION"
           else
