@@ -17,6 +17,7 @@ jobs:
           cp tests/version-check.py ./version-check.py
           cp tests/version.txt ./version.txt
           chmod +x ./version-check.py
+          ls
       - name: make build
         run: |
           make build
@@ -30,9 +31,9 @@ jobs:
           cat ./list.txt
           list=$(cat ./list.txt)
           ls
-          cat tests/version-check.py
-          cat tests/version.txt
-          python3 ./version-check.py ./list.txt ./version.txt
-          #python3 tests/version-check.py $list tests/version.txt 
+          cat ./version-check.py
+          cat ./versions.txt
+          python3 ./version-check.py ./list.txt ./versions.txt
+          #python3 tests/version-check.py $list tests/versions.txt 
           # ./list.txt tests/version.txt >> ./output.txt
           #cat ./output.txt
