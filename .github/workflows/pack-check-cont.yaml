@@ -25,5 +25,9 @@ jobs:
           ID=$( docker ps -aqf "name=stable" )
           docker exec stable pip list >> ./list.txt
           cat ./list.txt
-          python3 tests/version-check.py ./list.txt tests/version.txt >> ./output.txt
+          list=$(cat ./list.txt)
+          ls
+          python3 tests/version-check.py
+          python3 tests/version-check.py $list tests/version.txt 
+          ./list.txt tests/version.txt >> ./output.txt
           cat ./output.txt
