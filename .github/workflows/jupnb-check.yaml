@@ -37,7 +37,8 @@ jobs:
           docker exec $container_id pip install nbclient
           docker exec $container_id jupyter lab build --minimize=False
           echo "running notebook"
-          docker exec $container_id jupyter execute /home/jovyan/work/test.ipynb #if fails will exit here 
+          docker exec $container_id jupyter execute /home/jovyan/work/test.ipynb >> ./output.txt
+          cat ./output.txt
           echo "************SUCCESS***********"
       - name: Stop Docker container
         run: docker stop stable
