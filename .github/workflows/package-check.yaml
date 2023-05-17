@@ -21,9 +21,14 @@ jobs:
         run: |
           IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | head -n 1)
           docker run -d --name stable $IMAGE
+          sleep 7
           ID=$( docker ps -aqf "name=stable" )  
           docker exec stable pip freeze >> ./freeze2.txt
+          docker exec stable pip list >> ./list.txt
+          echo "freeze"
           cat ./freeze2.txt
+          echo "list"
+          cat ./list
           pip freeze > ./freeze.txt 
           #**********************************************************************
           ##NOTE: exact versions will need to be changed to the standarized image
@@ -163,6 +168,9 @@ jobs:
                 echo "CORRECT version of package: $line"
                 ;;
               jsonpointer==2.3)
+                echo "CORRECT version of package: $line"
+                ;;
+              jupyter-book==0.15.1)
                 echo "CORRECT version of package: $line"
                 ;;
               jupyter-cache==0.6.1)
