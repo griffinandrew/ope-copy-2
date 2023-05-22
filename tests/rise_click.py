@@ -41,9 +41,40 @@ print("Rise Extension is working!")
 
 #experimenting with adding to Ke's test
 
-# Locate and click the button to activate the RISE slideshow
-rise_start_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:start_slideshow"]')
-rise_start_button.click()
 
-assert driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]').is_displayed() 
-#i think rise sliders container needs to be changed 
+
+assert driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]').is_displayed()
+
+# Test 2: Verify slide navigation functionality
+next_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:next_slide"]')
+prev_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:prev_slide"]')
+
+# Click next slide button and verify the next slide is displayed
+next_slide_button.click()
+assert driver.find_element(By.XPATH, '//div[@class="rise-slide-content"][2]')
+
+# Click previous slide button and verify the previous slide is displayed
+prev_slide_button.click()
+assert driver.find_element(By.XPATH, '//div[@class="rise-slide-content"][1]')
+
+# Test 3: Verify entering and exiting the RISE slideshow mode
+enter_slideshow_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:start_slideshow"]')
+exit_slideshow_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:stop_slideshow"]')
+
+# Click enter slideshow button and verify the slideshow is active
+enter_slideshow_button.click()
+assert driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]').is_displayed()
+
+# Click exit slideshow button and verify the slideshow is no longer active
+exit_slideshow_button.click()
+assert not driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]')
+
+# Test 4: Verify customizing RISE settings
+settings_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:settings"]')
+settings_button.click()
+
+# Perform further assertions to verify the expected behavior of the settings menu
+
+print("RISE extension functionality tests passed!")
+
+driver.quit()
