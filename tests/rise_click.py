@@ -40,7 +40,40 @@ print("Rise Extension is working!")
 
 
 #experimenting with adding to Ke's test
-slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:slideshow"]')
+
+#testing slideshow
+#slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:slideshow"]')
+#slide_button.click()
+
+#print("slideshow")
+
+#help
+help_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:riseHelp"]')
+help_button.click()
+
+print("help")
+#experimenting with adding to Ke's test
+
+first_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:firstSlide"]')
+first_slide_button.click()
+
+print("first slide")
+
+
+last_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:lastSlide"]')
+last_slide_button.click()
+
+print("last slide")
+
+
+chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
+chlk_clear_button.click()
+
+
+chlk_next_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
+chlk_next_button.click()
+
+slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
 slide_button.click()
 
 
