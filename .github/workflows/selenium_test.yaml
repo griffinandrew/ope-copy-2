@@ -56,6 +56,7 @@ jobs:
       - name: Pull beta-version
         run: |
           make pull-beta
+          docker pull quay.io/rh_ee_keli/ope:beta-image-template-NERC-test
 
       - name: Run JupyterLab inside container
         run: |
