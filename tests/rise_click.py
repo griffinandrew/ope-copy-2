@@ -39,4 +39,11 @@ rise_button.click()
 print("Rise Extension is working!")
 
 
+#experimenting with adding to Ke's test
 
+# Locate and click the button to activate the RISE slideshow
+rise_start_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:start_slideshow"]')
+rise_start_button.click()
+
+assert driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]').is_displayed() 
+#i think rise sliders container needs to be changed 
