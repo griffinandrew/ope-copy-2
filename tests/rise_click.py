@@ -48,13 +48,13 @@ print("Rise Extension is working!")
 #print("slideshow")
 
 #help
-help_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:riseHelp"]')
-help_button.click()
+#help_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:riseHelp"]')
+#help_button.click()
 
 print("help")
 #experimenting with adding to Ke's test
 
-first_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:firstSlide"]')
+first_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:firstSlide"]')
 first_slide_button.click()
 
 print("first slide")
