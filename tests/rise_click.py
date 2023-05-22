@@ -52,15 +52,17 @@ print("Rise Extension is working!")
 #help_button.click()
 
 print("help")
+
+screen_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:fullscreenHelp"]')
+screen_button.click()
 #experimenting with adding to Ke's test
 
-first_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:firstSlide"]')
-first_slide_button.click()
+#first_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:firstSlide"]')
+#first_slide_button.click()
 
 print("first slide")
 
-
-last_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:lastSlide"]')
+last_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:lastSlide"]')
 last_slide_button.click()
 
 print("last slide")
