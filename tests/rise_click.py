@@ -53,8 +53,12 @@ print("Rise Extension is working!")
 
 print("help")
 
-screen_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:fullscreenHelp"]')
-screen_button.click()
+element = driver.find_element_by_xpath('//li[contains(@class, "lm-CommandPalette-item") and contains(@data-command, "RISE:slideshow")]')
+
+print(element)
+
+#screen_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:fullscreenHelp"]')
+#screen_button.click()
 #experimenting with adding to Ke's test
 
 #first_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:firstSlide"]')
