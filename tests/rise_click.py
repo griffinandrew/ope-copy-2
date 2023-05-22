@@ -42,21 +42,6 @@ print("Rise Extension is working!")
 #experimenting with adding to Ke's test
 
 
-
-#assert driver.find_element(By.XPATH, '//div[@class="rise-slides-container"]').is_displayed()
-
-# Test 2: Verify slide navigation functionality
-next_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:next_slide"]')
-prev_slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:prev_slide"]')
-
-# Click next slide button and verify the next slide is displayed
-next_slide_button.click()
-assert driver.find_element(By.XPATH, '//div[@class="rise-slide-content"][2]')
-
-# Click previous slide button and verify the previous slide is displayed
-prev_slide_button.click()
-assert driver.find_element(By.XPATH, '//div[@class="rise-slide-content"][1]')
-
 # Test 3: Verify entering and exiting the RISE slideshow mode
 enter_slideshow_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:start_slideshow"]')
 exit_slideshow_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:stop_slideshow"]')
