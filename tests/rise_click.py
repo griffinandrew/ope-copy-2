@@ -53,9 +53,18 @@ print("Rise Extension is working!")
 
 print("help")
 
-element = driver.find_element_by_xpath('//li[contains(@class, "lm-CommandPalette-item") and contains(@data-command, "RISE:slideshow")]')
+fullscreen_button = driver.find_element_by_xpath("//svg[@data-icon='RISE:fullScreen']")
 
-print(element)
+
+print(fullscreen_button)
+
+is_fullscreen = driver.execute_script("return document.fullscreenElement !== null") 
+
+print(is_fullscreen)
+
+#element = driver.find_element_by_xpath('//li[contains(@class, "lm-CommandPalette-item") and contains(@data-command, "RISE:slideshow")]')
+
+#print(element)
 
 #screen_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:fullscreenHelp"]')
 #screen_button.click()
