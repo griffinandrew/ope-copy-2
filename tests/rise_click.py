@@ -53,10 +53,16 @@ print("Rise Extension is working!")
 
 print("help")
 
-fullscreen_button = driver.find_element(By.XPATH,"//svg[@data-icon='RISE:fullScreen']")
+#fullscreen_button = driver.find_element(By.XPATH,"//span[@class='bp3-button-text']//svg[@data-icon='RISE:fullScreen']")
 
+toolbar = driver.find_element(By.XPATH, "//div[@class='lm-Widget p-Widget jp-Toolbar' and @role='navigation']")
 
+# Find the fullscreen button within the toolbar using XPath
+fullscreen_button = toolbar.find_element(By.XPATH,".//button[@title='Open the slideshow in full screen']")
+
+fullscreen_button.click()
 print(fullscreen_button)
+
 
 is_fullscreen = driver.execute_script("return document.fullscreenElement !== null") 
 
