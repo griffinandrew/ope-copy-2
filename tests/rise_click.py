@@ -85,6 +85,8 @@ slideshow = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPale
 slide_button = button = driver.find_element(By.XPATH, "//button[contains(@class, 'bp3-button') and @title='Open the slideshow in full screen']")
 slide_button.click()
 
+driver.back() #navigate back
+
 print("slideshow")
 
 notes = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:notes-open']")
