@@ -98,6 +98,22 @@ last_slide = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPal
 
 
 
+show_config = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:show-configuration']")
+
+chlkbd_clear = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:chalkboard-clear']")
+
+chlkbd_next = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:chalkboard-colorNext']")
+
+chlkbd_prev = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:chalkboard-colorPrev']")
+
+chlkbd_reset = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:chalkboard-reset']")
+
+chlkbd_toggle = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:chalkboard-toggleChalkboard']")
+
+rise_help = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:riseHelp']")
+
+screen_help = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:fullscreenHelp']")
+
 #chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
 #chlk_clear_button.click()
 
