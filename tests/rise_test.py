@@ -40,7 +40,10 @@ rise_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:previe
 print("Found RISE presentation button")
 rise_button.click()
 
+toolbar = driver.find_element(By.XPATH, "//div[@class='lm-Widget p-Widget jp-Toolbar' and @role='navigation']")
+fullscreen_button = toolbar.find_element(By.XPATH,".//button[@title='Open the slideshow in full screen']")
+fullscreen_button.click()
+is_fullscreen = driver.execute_script("return document.fullscreenElement !== null")
+print("fullscreen")
+
 print("Rise Extension is working!")
-
-
-
