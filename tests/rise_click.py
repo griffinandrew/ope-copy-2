@@ -80,10 +80,13 @@ print(is_fullscreen)
 
 #print("first slide")
 
-slideshow_button = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:slideshow']")
-slideshow_button.click()
+slideshow = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:slideshow']")
+
+slide_button = button = driver.find_element(By.XPATH, "//button[contains(@class, 'bp3-button') and @title='Open the slideshow in full screen']")
+slide_button.click()
 
 print("slideshow")
+
 
 #chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
 #chlk_clear_button.click()
