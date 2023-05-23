@@ -31,7 +31,7 @@ jobs:
   #         make push-beta
       
   
-  test:
+  selenium-test:
     runs-on: ubuntu-latest #use the latest ubuntu container image
     # needs: build
     steps:

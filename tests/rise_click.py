@@ -32,6 +32,7 @@ driver.implicitly_wait(10)
 new_nb_button = driver.find_element(By.XPATH, '//div[@data-category="Notebook"]')
 new_nb_button.click()
 
+print("new notebook is working")
 
 rise_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:preview"]')
 rise_button.click()
@@ -51,18 +52,16 @@ print("Rise Extension is working!")
 #help_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:riseHelp"]')
 #help_button.click()
 
-print("help")
+#print("help")
 
 #fullscreen_button = driver.find_element(By.XPATH,"//span[@class='bp3-button-text']//svg[@data-icon='RISE:fullScreen']")
 
 toolbar = driver.find_element(By.XPATH, "//div[@class='lm-Widget p-Widget jp-Toolbar' and @role='navigation']")
 
-# Find the fullscreen button within the toolbar using XPath
+# find the fullscreen button within the toolbar using XPath
 fullscreen_button = toolbar.find_element(By.XPATH,".//button[@title='Open the slideshow in full screen']")
 
 fullscreen_button.click()
-print(fullscreen_button)
-
 
 is_fullscreen = driver.execute_script("return document.fullscreenElement !== null") 
 
@@ -79,23 +78,22 @@ print(is_fullscreen)
 #first_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:firstSlide"]')
 #first_slide_button.click()
 
-print("first slide")
+#print("first slide")
 
-last_slide_button = driver.find_element(By.XPATH, '//li[@data-command="RISE:lastSlide"]')
-last_slide_button.click()
+slideshow_button = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:slideshow']")
+slideshow_button.click()
 
-print("last slide")
+print("slideshow")
+
+#chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
+#chlk_clear_button.click()
 
 
-chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
-chlk_clear_button.click()
+#chlk_next_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
+#chlk_next_button.click()
 
-
-chlk_next_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
-chlk_next_button.click()
-
-slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
-slide_button.click()
+#slide_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
+#slide_button.click()
 
 
 
