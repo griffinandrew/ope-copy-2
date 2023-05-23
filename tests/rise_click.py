@@ -87,6 +87,16 @@ slide_button.click()
 
 print("slideshow")
 
+notes = driver.find_elememt(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:notes-open']")
+
+print("notes")
+
+first_slide = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:firstSlide']")
+
+
+last_slide = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:lastSlide']")
+
+
 
 #chlk_clear_button = driver.find_element(By.XPATH, '//button[@data-command="RISE:chalkboard-clear"]')
 #chlk_clear_button.click()
