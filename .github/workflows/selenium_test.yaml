@@ -47,7 +47,7 @@ jobs:
 
       - name: Install Chromium
         run: |
-          sudo apt-get update
+          #sudo apt-get update taking forever, by guess is bc this
           sudo apt-get install -y chromium-browser
 
       - name: Installing necessary python packages
