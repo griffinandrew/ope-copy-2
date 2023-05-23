@@ -87,7 +87,7 @@ slide_button.click()
 
 print("slideshow")
 
-notes = driver.find_elememt(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:notes-open']")
+notes = driver.find_element(By.XPATH, "//li[contains(@class, 'lm-CommandPalette-item') and @data-command='RISE:notes-open']")
 
 print("notes")
 
