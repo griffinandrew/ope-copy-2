@@ -53,7 +53,7 @@ print("Rise Extension is working!")
 
 print("help")
 
-fullscreen_button = driver.find_element_by_xpath("//svg[@data-icon='RISE:fullScreen']")
+fullscreen_button = driver.find_element(By.XPATH,"//svg[@data-icon='RISE:fullScreen']")
 
 
 print(fullscreen_button)
