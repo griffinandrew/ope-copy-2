@@ -44,6 +44,6 @@ toolbar = driver.find_element(By.XPATH, "//div[@class='lm-Widget p-Widget jp-Too
 fullscreen_button = toolbar.find_element(By.XPATH,".//button[@title='Open the slideshow in full screen']")
 fullscreen_button.click()
 is_fullscreen = driver.execute_script("return document.fullscreenElement !== null")
-print("fullscreen")
+print("fullscreen button is functioning")
 
 print("Rise Extension is working!")
