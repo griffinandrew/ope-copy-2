@@ -41,11 +41,14 @@ USER ${NB_UID}
 # sometimes there are problems with the existing version of installed python packages
 # these need to be installed to the prerequisite versions before we can install the rest of the
 # packages. Install Python 3 packages
+
+#this is bc the run under it is failing via versionitis
+RUN mamba install --quiet --yes python=3.10
+
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
-    mamba install --quiet --yes jupyter_contrib_nbextensions=0.5.0 && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}" && \
     mamba clean -afy
