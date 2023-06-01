@@ -43,7 +43,7 @@ USER ${NB_UID}
 # packages. Install Python 3 packages
 
 #this is bc the run under it is failing via versionitis
-RUN mamba install --quiet --yes python=3.10
+RUN mamba install --quiet --yes python=3.10.*
 
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
