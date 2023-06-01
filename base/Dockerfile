@@ -42,8 +42,13 @@ USER ${NB_UID}
 # these need to be installed to the prerequisite versions before we can install the rest of the
 # packages. Install Python 3 packages
 
-RUN echo ${PYTHON_PREREQ_VERSIONS} ${PYTHON_INSTALL_PACKAGES} && \
-    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
+# Install Python 3.9 as a prerequisite for jupyter_contrib_nbextensions
+RUN mamba install --quiet --yes python=3.9.*
+
+# Install jupyter_contrib_nbextensions version 0.5.1
+RUN mamba install --quiet --yes jupyter_contrib_nbextensions=0.5.1
+
+RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
