@@ -43,6 +43,8 @@ USER ${NB_UID}
 # packages. Install Python 3 packages
 #RUN python --version
 
+RUN conda install --quiet --yes conda=23.3.1
+
 
 RUN mamba update -n base -c defaults conda -y && \
     mamba update mamba -y && \
