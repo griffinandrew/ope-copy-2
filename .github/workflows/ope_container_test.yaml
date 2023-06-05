@@ -17,6 +17,7 @@ jobs:
 
       - name: Build the image
         run: |
+          python --version
           make build
         
       - name: Push beta version
