@@ -31,7 +31,8 @@ RUN dpkg --add-architecture i386 && \
     apt-get -y update --fix-missing && \
     apt-get -y install ${ADDITIONAL_DISTRO_PACKAGES} && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
-    
+
+RUN apt-get install -y python3.10
 # Now that distro packages are installed lets install the python packages we want
 # This was inspired by
 # https://github.com/jupyter/docker-stacks/blob/b186ce5fea6aa9af23fb74167dca52908cb28d71/scipy-notebook/Dockerfile
@@ -41,10 +42,6 @@ USER ${NB_UID}
 # sometimes there are problems with the existing version of installed python packages
 # these need to be installed to the prerequisite versions before we can install the rest of the
 # packages. Install Python 3 packages
-RUN python --version
-
-RUN apt-get install -y python3.10
-
 RUN python --version
 
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
