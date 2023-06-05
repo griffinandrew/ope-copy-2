@@ -44,9 +44,11 @@ USER ${NB_UID}
 # packages. Install Python 3 packages
 #RUN python --version
 
-RUN mamba install --quiet --yes python=3.10 && \ 
-    mamba update -n base -c defaults conda -y && \
-    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
+
+RUN mamba update -n base -c defaults conda -y && \
+    mamba update mamba -y && \
+    mamba install --quiet --yes python=3.10 && \
+    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
