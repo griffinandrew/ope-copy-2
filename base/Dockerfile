@@ -32,7 +32,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get -y install ${ADDITIONAL_DISTRO_PACKAGES} && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y python3.10
+#RUN apt-get install -y python3.10
 # Now that distro packages are installed lets install the python packages we want
 # This was inspired by
 # https://github.com/jupyter/docker-stacks/blob/b186ce5fea6aa9af23fb74167dca52908cb28d71/scipy-notebook/Dockerfile
@@ -42,14 +42,14 @@ USER ${NB_UID}
 # sometimes there are problems with the existing version of installed python packages
 # these need to be installed to the prerequisite versions before we can install the rest of the
 # packages. Install Python 3 packages
-RUN python --version
+#RUN python --version
 
-RUN mamba --version && \ 
+RUN mamba update -n base -c defaults conda -y && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
-    mamba install --quiet --yes jupyter_highlight_selected_word=0.1.0 && \
-    mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
+    #mamba install --quiet --yes jupyter_highlight_selected_word=0.1.0 && \
+    #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
     fix-permissions "${CONDA_DIR}" && \
