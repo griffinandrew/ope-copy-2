@@ -46,12 +46,12 @@ USER ${NB_UID}
 
 RUN mamba update -n base -c defaults conda -y && \
     mamba update mamba -y && \
+    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
+    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     mamba install --quiet --yes python=3.10 && \
-    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
-    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
     fix-permissions "${CONDA_DIR}" && \
