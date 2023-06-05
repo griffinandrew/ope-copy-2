@@ -43,6 +43,10 @@ USER ${NB_UID}
 # packages. Install Python 3 packages
 RUN python --version
 
+RUN apt-get install -y python3.10
+
+RUN python --version
+
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
