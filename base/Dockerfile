@@ -47,7 +47,7 @@ USER ${NB_UID}
 
 RUN mamba update -n base -c defaults conda -y && \
     mamba update mamba -y && \
-    mamba install --quiet --yes python=3.10 && \
+    #mamba install --quiet --yes python=3.10 && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
