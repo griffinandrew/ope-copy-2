@@ -52,7 +52,7 @@ RUN mamba update -n base -c defaults conda -y && \
     mamba --version && \
     python --version && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
-    conda install --quiet --yes python=3.9 && \
+    conda install --quiet --yes python=3.9 --no-pin && \
     python --version && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
