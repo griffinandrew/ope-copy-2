@@ -5,11 +5,10 @@ jupytext
 widgetsnbextension 
 matplotlib
 pandas 
-jupyter_contrib_nbextensions 
+jupyter_contrib_nbextensions==0.7.0
 ipydrawio 
 ipydrawio-export 
 jupyterlab-myst 
 jupyterlab-spellchecker
 nbconvert
 pyppeteer
-
