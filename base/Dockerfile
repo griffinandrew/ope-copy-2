@@ -32,7 +32,6 @@ RUN dpkg --add-architecture i386 && \
     apt-get -y install ${ADDITIONAL_DISTRO_PACKAGES} && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#RUN apt-get install -y python3.10
 # Now that distro packages are installed lets install the python packages we want
 # This was inspired by
 # https://github.com/jupyter/docker-stacks/blob/b186ce5fea6aa9af23fb74167dca52908cb28d71/scipy-notebook/Dockerfile
@@ -47,7 +46,8 @@ USER ${NB_UID}
 
 RUN mamba update -n base -c defaults conda -y && \
     mamba update mamba -y && \
-    #mamba install --quiet --yes python=3.10 && \
+    mamba install --quiet --yes mamba=0.16.0 && \
+    mamba install --quiet --yes python=3.10 && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     pip install nbclient==0.5.13 && \
