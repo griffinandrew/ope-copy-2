@@ -48,6 +48,8 @@ RUN conda install --quiet --yes conda=23.3.1
 
 RUN mamba update -n base -c defaults conda -y && \
     mamba update mamba -y && \
+    conda --version
+    mamba --version
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes python=3.10 && \
