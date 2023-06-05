@@ -41,6 +41,8 @@ USER ${NB_UID}
 # sometimes there are problems with the existing version of installed python packages
 # these need to be installed to the prerequisite versions before we can install the rest of the
 # packages. Install Python 3 packages
+RUN python --version
+
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}  && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
