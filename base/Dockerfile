@@ -51,7 +51,7 @@ RUN mamba update -n base -c defaults conda -y && \
     conda --version && \
     mamba --version && \
     python --version && \
-    conda remove python
+    conda remove python && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     conda install --quiet --yes python=3.9 --no-pin && \
     python --version && \
