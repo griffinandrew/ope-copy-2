@@ -60,8 +60,8 @@ RUN conda --version && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     #conda install --quiet --yes python=3.9 --no-pin && \
     python --version && \
-    conda config --remove conda-forge/linux-64 python && \
-    
+    #conda config --remove conda-forge/linux-64 python && \
+    conda config --env --remove channels 'https://conda.anaconda.org/conda-forge/linux-64/python-3.11.3-h2755cc3_0_cpython.conda' && \
     conda install --quiet --yes python=3.9 --no-pin && \ 
     python --version && \ 
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
