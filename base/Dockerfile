@@ -57,7 +57,7 @@ RUN conda --version && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     #conda install --quiet --yes python=3.9 --no-pin && \
     python --version && \
-    conda config --env  --remove python && \
+    conda config --env --remove pinned python && \
     conda install --quiet --yes python=3.9 --no-pin && \ 
     python --version && \ 
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
