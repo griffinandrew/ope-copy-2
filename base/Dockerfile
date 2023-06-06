@@ -46,8 +46,8 @@ USER ${NB_UID}
 RUN conda install --quiet --yes conda=23.3.1 --no-pin
 
 
-RUN mamba update -n base -c defaults conda -y && \
-    mamba update mamba -y && \
+RUN #mamba update -n base -c defaults conda -y && \
+    #mamba update mamba -y && \
     conda --version && \
     mamba --version && \
     python --version && \
