@@ -53,7 +53,8 @@ RUN conda --version && \
     python --version && \
     #conda remove python && \
     conda config --show-sources && \
-    conda config --show-env && \
+    #conda config --show-env && \
+    conda list --show-channel-urls && \ 
     conda list --explicit && \
     #conda config --remove python && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
