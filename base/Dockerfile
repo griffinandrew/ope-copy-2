@@ -54,15 +54,15 @@ RUN conda --version && \
     #conda remove python && \
     conda config --show-sources && \
     #conda config --show-env && \
-    conda list --show-channel-urls && \ 
+    #conda list --show-channel-urls && \ 
     conda list --explicit && \
     #conda config --remove python && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     #conda install --quiet --yes python=3.9 --no-pin && \
     python --version && \
     #conda config --remove conda-forge/linux-64 python && \
-    conda config --env --remove channels 'https://conda.anaconda.org/conda-forge/linux-64/python-3.11.3-h2755cc3_0_cpython.conda' && \
-    conda install --quiet --yes python=3.9 --no-pin && \ 
+    #conda config --env --remove channels 'https://conda.anaconda.org/conda-forge/linux-64/python-3.11.3-h2755cc3_0_cpython.conda' && \
+    conda install --yes python=3.9 --no-pin && \ 
     python --version && \ 
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
