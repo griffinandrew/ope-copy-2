@@ -49,25 +49,25 @@ RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
     sed -i '/^python=/d' /opt/conda/.condarc && \
     #echo "python: 3.9" >> /opt/conda/.condarc && \ 
     python --version && \
-    conda clean --all --yes
+    #conda clean --all --yes
 
     #mamba update -n base -c defaults conda -y && \
     #mamba update mamba -y && \
 RUN conda --version && \
     mamba --version && \
     python --version && \
-    conda config --show-sources && \
+    #conda config --show-sources && \
     #conda config --show-env && \
     #conda list --show-channel-urls && \ 
     #conda list --explicit && \
     #conda config --remove python && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     #conda install --quiet --yes python=3.9 --no-pin && \
-    python --version && \
+    #python --version && \
     #conda config --remove conda-forge/linux-64 python && \
     #conda config --env --remove channels 'https://conda.anaconda.org/conda-forge/linux-64/python-3.11.3-h2755cc3_0_cpython.conda' && \
-    conda install --quiet --yes python=3.9 --no-pin && \ 
-    python --version && \ 
+    #conda install --quiet --yes python=3.9 --no-pin && \ 
+    #python --version && \ 
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
