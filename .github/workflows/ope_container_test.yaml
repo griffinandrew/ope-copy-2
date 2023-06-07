@@ -3,7 +3,7 @@ name: OPE Container Test
 on:
   push:
     branches: 
-      - 'container*'
+      - 'container-base-ope'
 
 env:
     REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
