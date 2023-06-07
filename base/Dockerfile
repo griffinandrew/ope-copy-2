@@ -56,6 +56,7 @@ RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
 RUN conda --version && \
     mamba --version && \
     python --version && \
+    conda install --quiet --yes -c conda-forge python=3.9.16 && \ 
     #conda config --show-sources && \
     #conda config --show-env && \
     #conda list --show-channel-urls && \ 
