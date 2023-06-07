@@ -45,8 +45,8 @@ USER ${NB_UID}
 
 RUN conda install --quiet --yes conda=23.3.1 --no-pin && \ 
     conda update ipython && \
-    echo "python: 3.9" >> /opt/conda/.condarc 
-
+    echo "python: 3.9" >> /opt/conda/.condarc && \ 
+    python --version && \
 
     #mamba update -n base -c defaults conda -y && \
     #mamba update mamba -y && \
