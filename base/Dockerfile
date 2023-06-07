@@ -48,7 +48,7 @@ RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
     python --version && \
     sed -i '/^python=/d' /opt/conda/.condarc && \
     #echo "python: 3.9" >> /opt/conda/.condarc && \ 
-    python --version && \
+    python --version
     #conda clean --all --yes
 
     #mamba update -n base -c defaults conda -y && \
