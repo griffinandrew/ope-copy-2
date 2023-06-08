@@ -51,6 +51,8 @@ RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
     #python --version
     #conda clean --all --yes
 
+RUN conda install mamba=1.4.2 python=3.9.16 --no-pin
+
     #mamba update -n base -c defaults conda -y && \
     #mamba update mamba -y && \
 RUN conda --version && \
@@ -63,8 +65,8 @@ RUN conda --version && \
     #conda list --explicit && \
     #conda config --remove python && \
 
- #mamba remove --force python && \
-RUN mamba install python=3.9.16
+    #mamba remove --force python && \
+#RUN mamba install python=3.9.16
 
 
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}
