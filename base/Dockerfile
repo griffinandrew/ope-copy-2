@@ -63,8 +63,8 @@ RUN conda --version && \
     #conda list --explicit && \
     #conda config --remove python && \
 
-RUN mamba remove --force python && \
-    mamba install python=3.9.16
+ #mamba remove --force python && \
+RUN mamba install python=3.9.16
 
 
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}
