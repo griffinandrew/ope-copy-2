@@ -70,10 +70,13 @@ RUN conda --version && \
 
 
 RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
+    mamba list && \
+    mamba remove --all && \
+    mamba list && \ 
     mamba install --quiet --yes python=3.9.16 --no-pin && \
-    conda install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
-    conda install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
-    conda install --quiet --yes jupyter_contrib_nbextensions && \
+    mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
+    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
+    mamba install --quiet --yes jupyter_contrib_nbextensions && \
     pip install nbclient==0.5.13 && \
     pip install jupyterlab_rise && \
     fix-permissions "${CONDA_DIR}" && \
