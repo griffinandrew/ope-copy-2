@@ -70,6 +70,7 @@ RUN conda --version && \
 
 
 RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
+    mamba install --quiet --yes python=3.9.16 --no-pin && \
     conda install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     conda install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
     conda install --quiet --yes jupyter_contrib_nbextensions && \
