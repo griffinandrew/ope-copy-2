@@ -69,10 +69,17 @@ RUN conda --version && \
 #RUN mamba install python=3.9.16
 
 
-RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
-    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
-
-RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin
+RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
+    conda install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
+    conda install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
+    conda install --quiet --yes jupyter_contrib_nbextensions && \
+    pip install nbclient==0.5.13 && \
+    pip install jupyterlab_rise && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}" && \
+    mamba clean -afy
+   
+#RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin
     #conda install --quiet --yes python=3.9 --no-pin && \
     #python --version && \
     #conda config --remove conda-forge/linux-64 python && \
@@ -81,18 +88,18 @@ RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin
     #python --version && \ 
     
 #RUN mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
-RUN conda install --quiet --yes jupyter_contrib_nbextensions
+#RUN conda install --quiet --yes jupyter_contrib_nbextensions
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     #mamba install --quiet --yes python=3.10 && \
     
-RUN pip install nbclient==0.5.13 && \
-    pip install jupyterlab_rise
+#RUN pip install nbclient==0.5.13 && \
+#    pip install jupyterlab_rise
     
-RUN fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}" && \
-    mamba clean -afy
+#RUN fix-permissions "${CONDA_DIR}" && \
+#    fix-permissions "/home/${NB_USER}" && \
+#    mamba clean -afy
 
 USER ${NB_UID}
 
