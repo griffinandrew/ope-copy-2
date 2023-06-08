@@ -78,6 +78,7 @@ RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}
     #python --version && \ 
     
 RUN mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
+    conda install --quiet --yes jupyter_contrib_nbextensions
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
