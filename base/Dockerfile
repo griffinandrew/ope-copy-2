@@ -70,9 +70,9 @@ RUN conda --version && \
 
 
 RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \
-    mamba list && \
-    mamba remove --all && \
-    mamba list && \ 
+    #mamba list && \
+    #mamba remove --all && \
+    #mamba list && \ 
     mamba install --quiet --yes python=3.9.16 --no-pin && \
     mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
     mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
