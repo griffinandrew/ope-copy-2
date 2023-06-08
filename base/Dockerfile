@@ -43,9 +43,9 @@ USER ${NB_UID}
 # packages. Install Python 3 packages
 #RUN python --version
 
-RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \ 
+#RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin && \ 
     #conda update ipython && \
-    python --version
+    #python --version
     #sed -i '/^python=/d' /opt/conda/.condarc && \
     #echo "python: 3.9" >> /opt/conda/.condarc && \ 
     #python --version
@@ -69,7 +69,9 @@ RUN conda --version && \
 #RUN mamba install python=3.9.16
 
 
-RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}
+RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
+    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
+    conda install --quiet --yes conda=23.3.1 python=3.9.16
     #conda install --quiet --yes python=3.9 --no-pin && \
     #python --version && \
     #conda config --remove conda-forge/linux-64 python && \
@@ -77,8 +79,8 @@ RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS}
     #conda install --quiet --yes python=3.9 --no-pin && \ 
     #python --version && \ 
     
-RUN mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
-    conda install --quiet --yes jupyter_contrib_nbextensions
+#RUN mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
+RUN conda install --quiet --yes jupyter_contrib_nbextensions
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
     #mamba install --quiet --yes jupyter_contrib_nbextensions=0.7.0 && \
     #mamba install --quiet --yes jupyter_highlight_selected_word=0.2.0 && \
