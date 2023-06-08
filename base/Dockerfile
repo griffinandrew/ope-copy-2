@@ -70,8 +70,9 @@ RUN conda --version && \
 
 
 RUN mamba install --quiet --yes ${PYTHON_PREREQ_VERSIONS} && \
-    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES} && \
-    conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin
+    mamba install --quiet --yes ${PYTHON_INSTALL_PACKAGES}
+
+RUN conda install --quiet --yes conda=23.3.1 python=3.9.16 --no-pin
     #conda install --quiet --yes python=3.9 --no-pin && \
     #python --version && \
     #conda config --remove conda-forge/linux-64 python && \
